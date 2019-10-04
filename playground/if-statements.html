@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>If Statements</title>
+  <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+  * empty array
+  * empty object
+
+  <h2>Truthy Values</h2>
+  * 1
+  * -10
+  * full string
+  * a string of "0"
+
+  <h2>Falsy Values</h2>
+  * 0
+  * undefined variable
+  * Variable set to null
+  * a variable set to `"hello" - 10` NaN
+  * empty string
+
+  <script>
+    const age = 100;
+    if (age > 70) {
+      console.log('In your seventies');
+    } else if (age > 60) {
+      console.log('In your sixties');
+    } else if (age > 50) {
+      console.log('In your 50s');
+    } else {
+      console.log('Nothing was true');
+    }
+
+    function slugify(sentence, lowercase) {
+      let slug = sentence.replace(/\s/g, '-');
+      if (lowercase) {
+        return slug.toLowerCase();
+      }
+      return slug;
+    }
+
+    const name = 'wes';
+    const last = 'bos';
+
+    if (name === 'scott' || (name === 'wes' && last == 'bos')) {
+      console.log('Coool Name!');
+    }
+
+    const isAwesomeName = 'awesome'.includes(name);
+    if (isAwesomeName) {
+      console.log('SUPER COOL AWESOME NAME');
+    }
+
+    function nameIsAwesome(name) {
+      return 'awesome'.includes(name);
+    }
+
+    if (nameIsAwesome('wes')) {
+      console.log('COOL NAME WES');
+    }
+
+    const dog = '';
+
+    if (dog) {
+      console.log('you have a dog');
+    } else {
+      console.log('you dont have a dog');
+    }
+
+    let score = {};
+
+    if (score) {
+      console.log('There is a score already');
+    } else {
+      console.log('No score yet');
+    }
+
+
+    const values = [[], {}, -10, 1, 0, '', 'full string', ' ', undefined, NaN, null, '0️⃣', '💩'];
+
+    console.group('truthy or falsy values');
+    values.forEach(value => {
+      if (value) {
+        console.log(value, 'is truthy');
+      } else {
+        console.log(value, 'is falsy');
+      }
+    });
+    console.groupEnd();
+
+    console.clear();
+
+    const isCool = true;
+
+    if (!isCool) {
+      console.log('You are not cool');
+    }
+
+    // ternary
+    const count = 5234234;
+    // let word;
+    // if (count === 1) {
+    //   word = 'item';
+    // } else {
+    //   word = 'items';
+    // }
+
+    // 1. Condition
+    // 2. what to do if true
+    // 3. what to do if false
+    const word = count === 1 ? 'item' : 'items';
+    const sentence = `You have ${count} item${count === 1 ? '' : 's'} in your cart`;
+    console.log(sentence);
+
+    function showAdminBar() {
+      console.log('Showing admin bar');
+    }
+    const isAdmin = false;
+    // isAdmin ? showAdminBar() : null;
+
+    // AND AND TRICK!
+    function check1() {
+      console.log('Running check 1');
+      return true;
+    }
+    function check2() {
+      console.log('Running check 2');
+      return false;
+    }
+    function check3() {
+      console.log('Running check 3');
+      return true;
+    }
+
+    if (check1() && check2() && check3()) {
+      console.log('all checks passed');
+    } else {
+      console.log('Some checks failed');
+    }
+    // isAdmin ? showAdminBar() : null;
+    isAdmin && showAdminBar();
+
+    if (isAdmin) { showAdminBar(); }
+
+  </script>
+</body>
+
+</html>
