@@ -25,9 +25,7 @@ async function detect() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   // paintFace(faces);
   faces.forEach(drawFace);
-  // faces.forEach(censor);
-  // faces[0] && createImageOfFace(faces[0].boundingBox);
-  // drawMouth(faces[0]);
+  faces.forEach(censor);
   requestAnimationFrame(detect);
 }
 
