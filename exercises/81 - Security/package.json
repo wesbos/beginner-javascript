@@ -1,0 +1,17 @@
+{
+  "name": "security",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dompurify": "^2.0.7"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}
