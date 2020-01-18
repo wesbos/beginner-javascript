@@ -1,7 +1,7 @@
 .slides {
   width: 800px;
   height: 500px;
-  border:2px solid black;
+  border: 2px solid black;
   position: relative;
   margin: 0 auto;
   overflow: hidden;
@@ -23,7 +23,7 @@
   transform: translateX(-200%);
 }
 
-.slide.next + .slide {
+.slide.next+.slide {
   transform: translateX(200%);
 }
 
@@ -31,10 +31,12 @@
   z-index: 10;
   transform: translateX(-100%);
 }
+
 .slide.current {
   z-index: 10;
   transform: translateX(0);
 }
+
 .slide.next {
   z-index: 10;
   transform: translateX(100%);
@@ -43,7 +45,7 @@
 .controls {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
-  gap: 2rem;
+  grid-gap: 2rem;
   justify-content: center;
   padding: 2rem;
 }
