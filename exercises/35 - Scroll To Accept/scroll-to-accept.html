@@ -44,7 +44,17 @@
         molestiae sit sunt fugiat, perspiciatis architecto velit unde molestias ratione totam, atque doloremque!</p>
       <hr>
     </div>
-    <button class="accept" disabled>Accept</button>
+    <!--
+      autocomplete="off" adresses an issue with firefox
+      where the browser will persist dynamic disabled state
+      on buttons across page loads.
+
+      More info here (se 'disabled' under 'Attributes')
+      https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
+
+      This may or may not be desired in a real world scenario 🙃
+    -->
+    <button class="accept" disabled autocomplete="off">Accept</button>
   </div>
 
   <style>
