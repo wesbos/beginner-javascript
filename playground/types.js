@@ -1,4 +1,4 @@
-/* eslint-disable */
+/* eslint-disabled */
 /*
 const name = 'wes';
 const middle = "topher";
@@ -48,36 +48,30 @@ console.log(`Each kids gets ${eachKidGets}`);
 const price = 1034;
 */
 
+// const person = {
+//   first: 'wes',
+//   last: 'bos',
+//   age: 100
+// };
 
-/*
-const person = {
-  first: 'wes',
-  last: 'bos',
-  age: 100
-};
+// let dog;
+// console.log(dog);
+// dog = 'snickers';
 
+// let somethingUndefined;
+// const somethingNull = null;
 
-let dog;
-console.log(dog);
-dog = 'snickers';
+// const cher = {
+//   first: 'cher'
+// };
 
+// const teller = {
+//   first: 'Raymond',
+//   last: 'Teller'
+// }
 
-let somethingUndefined;
-const somethingNull = null;
-
-const cher = {
-  first: 'cher'
-};
-
-const teller = {
-  first: 'Raymond',
-  last: 'Teller'
-}
-
-teller.first = 'Teller';
-teller.last = null;
-
-*/
+// teller.first = 'Teller';
+// teller.last = null;
 
 let isDrawing = false;
 let age = 18;
