@@ -11,3 +11,4 @@ Please feel free to add your blog post, videos, notes, or anything else related 
 
 - [Soumya Ranjan Mohanty](https://github.com/geekysrm)'s [Github repo](https://github.com/geekysrm/javascript-notes) with notes and lessons learnt, along with [full notes here](http://bit.ly/beginner-javascript-notes).
 
+- [Troubleshooting Modules with Parcel](https://www.theengine.tech/parcel-modules) -- post by [The Engine](https://www.theengine.tech/), related to exercise [84 - Web Speech Colour Game](https://github.com/wesbos/beginner-javascript/tree/master/exercises/84%20-%20Web%20Speech%20Colour%20Game)
