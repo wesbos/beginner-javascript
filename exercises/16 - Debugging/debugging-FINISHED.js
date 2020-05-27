@@ -4,8 +4,6 @@ const people = [
   { name: 'Snickers', cool: false, country: 'Dog Country' },
 ];
 
-/* Victor Mono */
-// New Font!
 people.forEach((person, index) => {
   console.groupCollapsed(`${person.name}`);
   console.log(person.country);
