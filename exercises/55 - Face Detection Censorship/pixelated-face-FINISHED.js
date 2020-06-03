@@ -21,7 +21,7 @@ function handleOption(event) {
   const { value, name } = event.currentTarget;
   options[name] = parseFloat(value);
 }
-optionsInputs.forEach((input) => input.addEventListener('input', handleOption));
+optionsInputs.forEach(input => input.addEventListener('input', handleOption));
 
 // Write a fucntion that will populate the users video
 async function populateVideo() {
