@@ -3,11 +3,11 @@
 // it's possible that it won't work for you at the moment.
 
 const faceDetector = new window.FaceDetector();
-const video = document.querySelector("video.webcam");
-const canvas = document.querySelector("canvas.video");
-const ctx = canvas.getContext("2d");
-const faceCanvas = document.querySelector("canvas.face");
-const faceCtx = faceCanvas.getContext("2d");
+const video = document.querySelector('video.webcam');
+const canvas = document.querySelector('canvas.video');
+const ctx = canvas.getContext('2d');
+const faceCanvas = document.querySelector('canvas.face');
+const faceCtx = faceCanvas.getContext('2d');
 const SCALE = 1.2;
 const SIZE = 10;
 
@@ -68,7 +68,7 @@ function censor({ boundingBox: face }) {
 }
 function drawFace(face) {
   const { width, height, top, left } = face.boundingBox;
-  ctx.strokeStyle = "#ffc600";
+  ctx.strokeStyle = '#ffc600';
   ctx.lineWidth = 1;
   ctx.strokeRect(left, top, width, height);
   ctx.stroke();
