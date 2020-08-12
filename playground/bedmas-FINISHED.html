@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>BEDMAS</title>
+  <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+  <p><abbr>B</abbr>rackets</p>
+  <p><abbr>E</abbr>xponents</p>
+  <p><abbr>D</abbr>ivision</p>
+  <p><abbr>M</abbr>ultiplication</p>
+  <p><abbr>A</abbr>ddition</p>
+  <p><abbr>S</abbr>ubtraction</p>
+
+  <style>
+    p {
+      margin: 0;
+    }
+
+    abbr {
+      font-size: 50px;
+    }
+  </style>
+
+  <script>
+    const age = 10 * 5 - 2; // 48
+    const age2 = 10 * (5 - 2); // 30
+
+    function calculateBill(billAmount, taxRate = 0.13, tipRate = 0.15) {
+      // this is the function body
+      console.log('Running Calculate Bill!!');
+      const total = billAmount + billAmount * taxRate + billAmount * tipRate;
+      return total;
+    }
+
+    const total = 128 + (25.6 - 19.2);
+
+  </script>
+</body>
+
+</html>

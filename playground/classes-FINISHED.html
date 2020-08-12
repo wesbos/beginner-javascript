@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Classes</title>
+  <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+  <script>
+    class Pizza {
+
+      // constructor
+      constructor(toppings = [], customer) {
+        // computer instance property
+        this.toppings = toppings;
+        this.customer = customer;
+      }
+
+      // static property
+      static toppings = ['pepperoni', 'cheese'];
+
+      // static method
+      static randomPizza() {
+        return new Pizza()
+      }
+
+      // prototype method (almost always this)
+      eat() {
+        console.log('CHOMP');
+        console.log(this.toppings);
+        console.log(this.slices);
+      }
+
+      // instance property
+      slices = 10;
+
+      // instance method
+      hi = () => {
+        console.log('Hiiii');
+        console.log(this);
+      }
+
+      // Getter Property
+      get length() {
+        return this.slices;
+      }
+
+      // Private Fields can only be modified inside a class
+      #bankBalance = 10000;
+    }
+
+    const myPizza = new Pizza(['onions'], 'Wes Bos');
+
+    console.log(myPizza);
+  </script>
+</body>
+
+</html>
