@@ -1,24 +1,24 @@
-const butts = document.querySelector('.butts');
-const coolButton = document.querySelector('.cool');
+const butts = document.querySelector(".butts");
+const coolButton = document.querySelector(".cool");
 
 function handleClick() {
-  console.log('🐛 IT GOT CLICKED!!!');
+  console.log("🐛 IT GOT CLICKED!!!");
 }
 
-const hooray = () => console.log('HOORAY!');
+const hooray = () => console.log("HOORAY!");
 
-butts.addEventListener('click', function() {
-  console.log('Im an anon!');
+butts.addEventListener("click", function() {
+  console.log("Im an anon!");
 });
-coolButton.addEventListener('click', hooray);
+coolButton.addEventListener("click", hooray);
 
-butts.removeEventListener('click', handleClick);
+butts.removeEventListener("click", handleClick);
 
 // Listen on multiple items
-const buyButtons = document.querySelectorAll('button.buy');
+const buyButtons = document.querySelectorAll("button.buy");
 
 function handleBuyButtonClick(event) {
-  console.log('You clicked a button!');
+  console.log("You clicked a button!");
   const button = event.target;
   // console.log(button.textContent);
   // console.log(parseFloat(event.target.dataset.price));
@@ -30,13 +30,13 @@ function handleBuyButtonClick(event) {
 }
 
 buyButtons.forEach(function(buyButton) {
-  buyButton.addEventListener('click', handleBuyButtonClick);
+  buyButton.addEventListener("click", handleBuyButtonClick);
 });
 
 window.addEventListener(
-  'click',
+  "click",
   function(event) {
-    console.log('YOU CLICKED THE WINDOW');
+    console.log("YOU CLICKED THE WINDOW");
     console.log(event.target);
     console.log(event.type);
     // event.stopPropagation();
@@ -45,9 +45,9 @@ window.addEventListener(
   { capture: true }
 );
 
-const photoEl = document.querySelector('.photo');
+const photoEl = document.querySelector(".photo");
 
-photoEl.addEventListener('mouseenter', e => {
+photoEl.addEventListener("mouseenter", (e) => {
   console.log(e.currentTarget);
   console.log(this);
 });
