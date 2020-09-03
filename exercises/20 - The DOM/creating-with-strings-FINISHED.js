@@ -1,4 +1,4 @@
-const item = document.querySelector('.item');
+const item = document.querySelector(".item");
 
 const width = 500;
 const src = `https://picsum.photos/${width}`;
