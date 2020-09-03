@@ -6,20 +6,19 @@
     <title>Events</title>
   </head>
   <body>
-    <button class="butts" type="button">Click Me!!!</button>
-    <button class="cool" type="button">Click Me Also!!!</button>
-    <h2>Buy Buttons:</h2>
-    <button class="buy">Buy Item 1</button>
-    <button class="buy">Buy Item 2</button>
-    <button class="buy">Buy Item 3</button>
-    <button class="buy">Buy Item 4</button>
-    <button class="buy">Buy Item 5</button>
-    <button class="buy">Buy Item 6</button>
-    <button class="buy">Buy Item 7</button>
-    <button class="buy">Buy Item 8</button>
-    <button class="buy">Buy Item 9</button>
-    <button class="buy">Buy Item 10</button>
+    <div class="wrapper">
+      <form name="signup">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" />
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" />
+        <input type="checkbox" id="agree" name="agree" />
+        <label for="agree">I agree to the terms and conditions</label>
+        <hr />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
 
-    <script src="./events.js"></script>
+    <script src="./forms.js"></script>
   </body>
 </html>
