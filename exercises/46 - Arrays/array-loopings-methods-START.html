@@ -195,6 +195,23 @@
         };
       }
       // console.log(findByProp("id", "565a"));
+
+      console.clear();
+
+      const total = orderTotals.reduce((a, b) => a + b, 0);
+      console.log(total);
+
+      const inventoryTotal = inventory.reduce((a, b) => a + b["price"], 0);
+      console.log(inventoryTotal);
+
+      function inventoryReducer(totals, item) {
+        console.log(`Looping over ${item.type}`);
+        totals[item.type] = totals[item.type] + 1 || 1;
+        return totals;
+      }
+
+      const inventoryCounts = inventory.reduce(inventoryReducer, {});
+      console.log(inventoryCounts);
     </script>
   </body>
 </html>
