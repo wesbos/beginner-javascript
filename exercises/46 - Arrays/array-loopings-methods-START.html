@@ -133,8 +133,8 @@
       ];
 
       /*
-      Looping Methods
-    */
+        Looping Methods
+      */
       function logTopping(topping) {
         console.log(topping);
         debugger;
@@ -151,6 +151,37 @@
 
       const toys = faces.map(addArms);
       console.log(toys);
+
+      const names = ["matthew", "jessica", "sampson", "jojo"];
+
+      function boltonify(name) {
+        return `${name} Bolton`;
+      }
+
+      function capitalize(name) {
+        return `${name[0].toUpperCase()}${name.slice(1)}`;
+      }
+
+      const fullNames = names.map(capitalize).map(boltonify);
+      console.log(fullNames);
+
+      const orderTotalsWithTax = orderTotals.map((total) => total * 1.08);
+      console.log(orderTotalsWithTax);
+
+      const cleanPeople = people.map(function(person) {
+        const birthday = new Date(person.birthday).getTime();
+        console.log(birthday);
+        const now = Date.now();
+        const age = now - birthday;
+        console.log(age);
+        const ageInYears = Math.floor(age / 31536000000);
+        console.log(Math.floor(ageInYears));
+        return {
+          age: ageInYears,
+          name: `${person.names.first} ${person.names.last}`,
+        };
+      });
+      console.table(cleanPeople);
     </script>
   </body>
 </html>
