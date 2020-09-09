@@ -135,6 +135,22 @@
       /*
       Looping Methods
     */
+      function logTopping(topping) {
+        console.log(topping);
+        debugger;
+      }
+      // toppings.forEach(logTopping);
+      toppings.forEach((topping, index, array) =>
+        console.log(topping, index, array)
+      );
+
+      console.clear();
+      function addArms(face) {
+        return `👐 ${face} 👐`;
+      }
+
+      const toys = faces.map(addArms);
+      console.log(toys);
     </script>
   </body>
 </html>
