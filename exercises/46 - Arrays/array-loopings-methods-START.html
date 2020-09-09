@@ -182,6 +182,19 @@
         };
       });
       console.table(cleanPeople);
+
+      const over40 = cleanPeople.filter((person) => person.age > 40);
+      console.log(over40);
+
+      const student = students.find(findByProp("id", "565a"));
+      console.log("STUDENT", student);
+
+      function findByProp(prop, propWeAreLookingFor) {
+        return function isStudent(student) {
+          return student[prop] === propWeAreLookingFor;
+        };
+      }
+      // console.log(findByProp("id", "565a"));
     </script>
   </body>
 </html>
