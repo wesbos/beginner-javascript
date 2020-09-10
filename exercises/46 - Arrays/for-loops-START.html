@@ -14,12 +14,60 @@
       const name = "Wes Bos";
 
       // For
+      for (let i = 0; i <= 10; i++) {
+        console.log(i);
+      }
 
       // For of
 
-      // For in
+      for (const letter of name) {
+        console.log(letter);
+      }
+
+      for (const number of numbers) {
+        console.log(number);
+      }
+
+      // For in - used for looping over keys in an object
+      for (const number in numbers) {
+        console.log(number);
+      }
+
+      const baseHumanStats = {
+        feet: 2,
+        arms: 2,
+        eyes: 2,
+        head: 1,
+      };
+
+      function Human(name) {
+        this.name = name;
+      }
+
+      Human.prototype = baseHumanStats;
+
+      const wes2 = new Human("wes");
+      console.log(Object.keys(wes2));
+
+      for (const prop in wes2) {
+        console.log(prop);
+      }
 
       // While Loop
+      let cool = true;
+      let i = 0;
+      while (cool) {
+        console.log("Matt is cool!!");
+        i++;
+        if (i > 99) {
+          cool = false;
+        }
+      }
+
+      // do while loop
+      // do {
+
+      // } while ()
     </script>
   </body>
 </html>
