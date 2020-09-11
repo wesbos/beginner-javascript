@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title>Censorship</title>
-    <link rel="stylesheet" href="../../base.css" />
-    <style>
-      * {
+    <link rel="stylesheet" href="/face.3ff48216.css">
+  </head>
+
+  <body>
+    <div class="wrap">
+      <video class="webcam"></video>
+      <canvas class="video"></canvas>
+      <canvas class="face"></canvas>
+    </div>
+    <script src="/face.bb716b77.js"></script>
+
+    <style>* {
         box-sizing: border-box;
       }
 
@@ -29,15 +38,6 @@
       .face {
         position: absolute;
       }
-    </style>
-  </head>
-
-  <body>
-    <div class="wrap">
-      <video class="webcam"></video>
-      <canvas class="video"></canvas>
-      <canvas class="face"></canvas>
-    </div>
-    <script src="./pixelated-face_1.js"></script>
+</style>
   </body>
 </html>
