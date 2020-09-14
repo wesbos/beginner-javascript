@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New, This, Prototypes and Classes</title>
+    <link rel="stylesheet" href="../../base.css" />
+  </head>
+  <body>
+    <button class="one">Button 1</button>
+    <button class="two">Button 2</button>
+
+    <script>
+      const myDate = new Date("September 14, 2020");
+      //   console.dir(myDate);
+
+      function Pizza(toppings = [], customer) {
+        // console.log("making a pizza");
+        console.log(this);
+        this.toppings = toppings;
+        this.customer = customer;
+        this.id = Math.floor(Math.random() * 16777215).toString(16);
+      }
+
+      const pepperoniPizza = new Pizza(["extra cheese", "pepperoni"], "Matt");
+      const canadianPizza = new Pizza(
+        ["pepperoni", "mushrooms", "onion"],
+        "Jess"
+      );
+      //   console.log(pepperoniPizza.constructor);
+      //   console.log(pepperoniPizza instanceof Pizza);
+
+      //   const buttonOne = document.querySelector(".one");
+      //   const buttonTwo = document.querySelector(".two");
+
+      //   function tellMeAboutTheButton() {
+      //     console.log(this);
+      //     setTimeout(() => {
+      //       this.textContent = "You clicked Me!";
+      //     }, 1000);
+      //   }
+
+      //   buttonOne.addEventListener("click", tellMeAboutTheButton);
+      //   buttonTwo.addEventListener("click", tellMeAboutTheButton);
+    </script>
+  </body>
+</html>
