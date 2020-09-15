@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bind Call and Apply</title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
+  <body>
+    <p>Hey!</p>
+    <button>Click Me</button>
+    <script>
+      const person = {
+        name: "Matthew Bolton",
+        sayHi() {
+          console.log(`Hey ${this.name}`);
+          return `Hey ${this.name}`;
+        },
+        describe(mealType, drinkType, taxRate) {
+          console.log(
+            `Your meal of ${mealType} with a drink of ${drinkType} was ${this.calculate(
+              taxRate
+            )}`
+          );
+        },
+      };
+
+      const bill = {
+        total: 1000,
+        calculate(taxRate) {
+          return this.total + this.total * taxRate;
+        },
+      };
+
+      const total = bill.calculate(0.13);
+      console.log(total);
+
+      const total2 = bill.calculate.call({ total: 500 }, 0.13);
+      console.log(total2);
+
+      const total3 = bill.calculate.apply({ total: 500 }, [0.2]);
+      console.log(total3);
+
+      const calc = bill.calculate.bind({ total: 500 });
+      console.log(calc(0.08));
+
+      const $ = document.querySelector.bind(document);
+    </script>
+  </body>
+</html>
