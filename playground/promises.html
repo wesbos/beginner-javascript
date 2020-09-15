@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Promises</title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
+
+  <body>
+    <script>
+      function makePizza(toppings = []) {
+        const pizzaPromise = new Promise((resolve, reject) => {
+          const amountOfTimeToBake = 500 + toppings.length * 200;
+          setTimeout(() => {
+            resolve(`Here is your 🍕 with the toppings ${toppings.join(" ")}`);
+          }, amountOfTimeToBake);
+        });
+        return pizzaPromise;
+      }
+      //   const pepperoniPromise = makePizza(["pepperoni"]);
+      //   const canadianPromise = makePizza(["pepperoni", "mushrooms", "onions"]);
+
+      //   console.log(pepperoniPromise, canadianPromise);
+
+      //   pepperoniPromise.then(function(pizza) {
+      //     console.log("Ahh got it!");
+      //     console.log(pizza);
+      //   });
+
+      //   makePizza(["pepperoni"])
+      //     .then((pizza) => {
+      //       console.log(pizza);
+      //       return makePizza(["chicken", "spinach", "onions"]);
+      //     })
+      //     .then((pizza) => {
+      //       console.log(pizza);
+      //     });
+
+      const pizzaPromise1 = makePizza(["pepperoni"]);
+      const pizzaPromise2 = makePizza(["chicken", "spinach", "onions"]);
+      const pizzaPromise3 = makePizza(["ham", "cheese"]);
+
+      const dinnerPromise = Promise.all([
+        pizzaPromise1,
+        pizzaPromise2,
+        pizzaPromise3,
+      ]);
+      dinnerPromise.then(function([hottie, garbagePail, hamAndCheese]) {
+        console.log(hottie, garbagePail, hamAndCheese);
+      });
+
+      const firstPizzaPromise = Promise.race([
+        pizzaPromise1,
+        pizzaPromise2,
+        pizzaPromise3,
+      ]);
+
+      firstPizzaPromise.then((pizza) => {
+        console.log("You must be hungry, here is the first one ready!");
+        console.log(pizza);
+      });
+    </script>
+  </body>
+</html>
