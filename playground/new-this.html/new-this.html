@@ -20,7 +20,49 @@
         this.toppings = toppings;
         this.customer = customer;
         this.id = Math.floor(Math.random() * 16777215).toString(16);
+        this.slices = 10;
+        // this.eat = function() {
+        //   console.log("CHOMP");
+        //   if (this.slices > 0) {
+        //     this.slices -= 1;
+        //     console.log(`You now have ${this.slices} slices left!`);
+        //     return this.slices;
+        //   } else {
+        //     console.log(`Sorry, there are no slices left!`);
+        //   }
+        // };
       }
+
+      String.prototype.sarcastic = function() {
+        const sarcastic = this.split("")
+          .map((char, i) => {
+            if (i % 2) {
+              return char.toUpperCase();
+            }
+            return char.toLowerCase();
+          })
+          .join("");
+        return sarcastic;
+      };
+
+      Pizza.prototype.eat = function() {
+        console.log("CHOMP");
+        if (this.slices > 0) {
+          this.slices -= 1;
+          console.log(`You now have ${this.slices} slices left!`);
+          return this.slices;
+        } else {
+          console.log(`Sorry, there are no slices left!`);
+        }
+      };
+
+      Pizza.prototype.describe = function() {
+        return `This pizza is for ${
+          this.customer
+        } with the toppings ${this.toppings.join(", ")} and there are ${
+          this.slices
+        } slices left! `;
+      };
 
       const pepperoniPizza = new Pizza(["extra cheese", "pepperoni"], "Matt");
       const canadianPizza = new Pizza(
