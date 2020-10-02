@@ -19,7 +19,7 @@ window.SpeechRecognition =
 
 function start() {
   // see if their browser supports this
-  if (!("SpeechRecognition" in window)) {
+  if (!window.SpeechRecognition) {
     console.log("Sorry your browser does not support speech reco. ");
     return;
   }
