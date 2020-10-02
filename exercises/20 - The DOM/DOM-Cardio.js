@@ -6,7 +6,7 @@
 
 // make an unordered list
 
-// add three list items with the words "one, two three" in them
+// add three list items with the words "one, two, three" in them
 // put that list into the above wrapper
 
 // create an image
@@ -33,7 +33,7 @@
 
 // make a new div with a class of cards
 
-// Have that function make 4 cards
+// make 4 player cards using generatePlayerCard
 
 // append those cards to the div
 // put the div into the DOM just before the wrapper element
