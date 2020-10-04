@@ -6,7 +6,7 @@ These are the starter files and solutions to the [Beginner JavaScript](https://B
 
 ## Function Definition Diagram
 
-![](function-definition.jpg)
+![Description of javaScript function](function-definition.jpg)
 
 ## Community Resources
 
