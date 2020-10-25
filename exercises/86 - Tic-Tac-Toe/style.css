@@ -1,0 +1,22 @@
+#game{
+    width:603px;
+    height:600px;
+    border:solid 3px
+}
+ 
+.line{
+    height:200px;
+    border-bottom:solid 1px;
+}
+ 
+.item{
+    width:200px;
+    height:100%;
+    border-right:solid 1px;
+    float:left;
+}
+
+.element {
+    background-size: 100% !important;
+    background-repeat: no-repeat !important;
+}
