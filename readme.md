@@ -14,3 +14,6 @@ Please feel free to add your blog post, videos, notes, or anything else related 
 
 - [Soumya Ranjan Mohanty](https://github.com/geekysrm)'s [Github repo](https://github.com/geekysrm/javascript-notes) with notes and lessons learnt, along with [full notes here](https://notes.soumya.dev/javascript).
 - [Linda has documented all her excercises on Codepen](https://twitter.com/lindakatcodes/status/1331702581220020225)
+ 
+
+ asdkljasdjaskldjlkasjd
