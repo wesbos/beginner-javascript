@@ -3,7 +3,7 @@ const fromInput = document.querySelector('[name="from_amount"]');
 const toSelect = document.querySelector('[name="to_currency"]');
 const toEl = document.querySelector('.to_amount');
 const form = document.querySelector('.app form');
-const endpoint = 'https://api.exchangeratesapi.io/latest';
+const endpoint = 'https://api.ratesapi.io/latest';
 const ratesByBase = {};
 
 const currencies = {
