@@ -10,11 +10,23 @@ people.forEach((person, index) => {
 
 // Console Methods
 
-// Callstack
+// people.forEach((person, index) => {
+//   console.groupCollapsed(`${person.name}`);
+//   console.log(person.country);
+//   console.log(person.cool);
+//   console.log('Done!!!!!');
+//   console.groupEnd(`${person.name}`);
+// });
+
+// console.table(people);
+
+// Callstack or Stack Trace
 
 // Grabbing Elements
+// $0
 
 // Breakpoints
+// debugger;
 
 // Scope
 
