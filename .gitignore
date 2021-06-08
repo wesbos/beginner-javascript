@@ -3,3 +3,10 @@ node_modules/
 haters/
 .cache/
 dist/
+
+.eslintrc
+
+../pi
+blink.js
+.vscode/sftp.json
+.gitignore

@@ -9,7 +9,88 @@
 </head>
 
 <body>
+  <ul class="prizes"></ul>
+
   <script>
+    // a dictionary is a way to store additional metadata about something else
+    const person1 = {
+      name: 'ben',
+      age: 34
+    };
+
+    const myMap = new Map();
+
+    // USE .set() to ADD ENTRIES
+    myMap.set('name', 'ben');
+    myMap.set(100, 'this is a number');
+    // here the key is an object and the value is Cool as hell
+    myMap.set(person1, 'Cool as hell');
+    // if you use this, it's a property on the map, not an entry
+    myMap.age = 17;
+
+    console.log(myMap.get(person1)); // this will return the value of the key
+
+    const score = 200;
+    const prizes = new Map();
+    prizes.set(100, 'Bear');
+    prizes.set(200, 'Duck');
+    prizes.set(300, 'Car');
+
+    // USE .get() to RETRIEVE ENTRIES
+    console.log(`You win a ${prizes.get(score)}`);
+
+    //Get Size with .size
+    console.log(prizes.size); // this is equivalent to length
+
+    // a map has a CONSISTENT ORDER, unlike an object.
+    const ul = document.querySelector('.prizes');
+    // this only gives values
+    prizes.forEach(entry => {
+      console.log(entry);
+    })
+
+    //  use FOR OF to get keys and values in an array
+    for (const prize of prizes) {
+      console.log(prize);
+    }
+
+    // DESTRUCTURING EXAMPLE, inserting HTML elements from a MAP
+
+    // instead of console.log(prize[0],prize[1]); how about this!!
+
+    for (const [points, prize] of prizes) {
+      // console.log(points, prize);
+
+      const li = `<li>${points} - ${prize}</li>`;
+      ul.insertAdjacentHTML('beforeend', li);
+    }
+
+    // MAPS ARE FOR STORING DATA
+    // you CANT put a FUNCTION in a MAP
+    // instead, put FUNCTIONS in OBJECTS (AKA METHODS)
+
+    // .has()
+
+
+    // .delete()
+    // deleting is simple
+    myMap.delete('name');
+
+
+    // JAY SAWN JSON BRUUUUUUUU !!!!!!!
+
+    // use this to move an object from browser to server, etc.
+
+
+    // turn OBJECT into STRING for portability
+    JSON.stringify(person);
+
+    // turn STRING into OBJECT for dev use!
+    JSON.parse('string here');
+
+    // NOTE: JSON doesn't handle maps! Must convert to object first. It still sucks.
+    Object.fromEntries(myMap);
+    // the benefits of map fall apart, like using an OBJECT as a KEY
 
   </script>
 </body>

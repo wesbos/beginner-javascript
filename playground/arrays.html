@@ -11,6 +11,121 @@
 </head>
 
 <body>
+  <script>
+    // ARRAYS
+
+    // each thing is an item
+    // each position is an index
+    // length is length
+    // any type can be put in an array
+    // like an object but there are no keys!
+
+    const names = ['ben', 'natsumi', 'nacho'];
+
+    // typeof names will return object. so...
+    // check if something is an array
+    Array.isArray(names);
+
+    // arrays are zero-based. first item is at [0]
+    // console.log(names[0]);
+
+    // use length to check number of items (not zero based)
+    // console.log(names.length);
+
+    // mutable
+    names.push('azuki');
+
+    // console.log(names);
+
+    // immutable
+    //take a copy and add an item 
+    // helpful for react where you don't want to push items into state
+    // this way you can push into a copy, then update state later
+    const names2 = [...names, 'lux'];
+
+    names.unshift('poppy');
+    const names3 = ['poppy', ...names];
+
+
+    // add an item in the middle without mutating original
+    const bikes = ['yamaha', 'suzuki', 'ducati', 'bmw', 'honda'];
+    const newBikes = [
+      ...bikes.slice(0, 2),
+      'harley davidson',
+      ...bikes.slice(2), // skipping the length goes to the end by default
+    ];
+    console.log(newBikes);
+
+    // remove a single item out of an array
+    const newBikes2 = [
+      ...newBikes.slice(0, 3),
+      ...newBikes.slice(4),
+    ];
+
+    //
+    const comments = [
+      { text: 'cool beans', id: 123 },
+      { text: 'cool AF', id: 133 },
+      { text: 'cool ranch', id: 233 },
+      { text: 'cool story', id: 333 },
+      { text: 'cool japan', id: 433 },
+    ];
+
+    function deleteComment(id, comments) {
+      // first FIND INDEX of the item in the array
+      const commentIndex = comments.findIndex(comment => comment.id === id);
+      // make a new array without that item in it
+      return [
+        ...comments.slice(0, commentIndex),
+        // asdfasdf
+        ...comments.slice(commentIndex + 1),
+      ]
+      // return our new array
+
+    }
+
+    // const natsumiIndex = names.findIndex('natsumi'); // this doesn't work, because it's not an object
+
+    // you have to loop through and check each one
+    const natsumiIndex = names.findIndex(name => name === 'natsumi');
+
+    // this creates an array of arrays unless you use the spread
+    const newNamesWithoutNatsumi = [
+      // get everything up to natsumi
+      ...names.slice(0, natsumiIndex),
+      // get everything after natsumi index
+      ...names.slice(natsumiIndex + 1)
+    ];
+
+    // new method flat is helpful
+    const newNames999 = newNamesWithoutNatsumi.flat();
+
+
+
+    // // MUTABLE.methods
+    // const numbers = [1, 2, 3, 4, 5];
+    // // numbers.reverse(); // this mutates the original!
+    // console.log(numbers);
+
+    // // use a mutable method WITHOUT MUTING THE ORIGINAL
+    // // ...first you need to take a copy (using the spread ... operator)
+
+    // const numbersReversed = [...numbers].reverse();
+
+    // console.log(numbers);
+    // this will remove these items, mutating the original
+    // numbers.splice(3, 2);
+
+    // console.log(numbers);
+
+    // // IMMUTABLE.methods
+
+    // const pizzaSlice = numbers.slice(2, 4);
+    // console.log(pizzaSlice);
+
+  </script>
+
+
 
 </body>
 

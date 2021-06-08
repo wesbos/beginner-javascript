@@ -9,18 +9,121 @@
 </head>
 
 <body>
+  <input type="text" name="first" value="ben">
+  <script src="https://unpkg.com/lodash"></script>
   <script>
     const age = 100;
-    const person = {
+    const ben = {
       age,
       name: 'ben',
       'cool-dude': true,
       'really cool': false,
       777: true,
       dog: 'scooby',
+      clothing: {
+        shirt: 10,
+        pants: 2,
+      },
     };
 
-    // asdfasdf
+    const nameInput = document.querySelector('[name="first"]');
+    // const name = nameInput.value;
+    // console.log(name); // if the input isn't on the page you get an error cannot read property of null
+    // the name input is not there!
+    // so an IF is needed
+    const name = nameInput ? nameInput.value : '';
+
+    // DELETE a property with delete
+    delete ben.job;
+
+    // Object REFERENCE vs. VALUES
+    // NOTES
+    // when comparing values, === checks type and value are the same
+    // when you set a string variable to another, the value is copied
+    // the other just takes the value, the other one does not update
+
+    // strings
+    let name1 = 'ben';
+    let name2 = 'ben';
+
+    console.log(name1 === name2);
+    name1 = 'bob';
+    console.log(name1 === name2);
+    name2 = name1;
+    name2 = 'bobopolis';
+
+    // objects
+
+    const person1 = {
+      first: 'ben',
+      last: 'tron',
+      clothing: {
+        shirt: 10,
+        pants: 2,
+      },
+    };
+
+    const person2 = {
+      first: 'ben',
+      last: 'tron',
+    };
+    console.log(person1 === person2);
+    // This returns false, because they are different objects,  even if contents are same
+    // this is different than strings!
+
+    // const person3 = person1; // this is a variable referencing (pointing to) the original
+    // THIS ^^^^^^^^^^^^^^^ IS NOT COPYING
+    // the same thing works with arrays, maps, and sets
+    // person3.first = 'Laramir';
+    // console.log(person3.first); // returns Laramir
+    // console.log(person1.first); // returns Laramir?????
+    // why is person1 getting updated here?????
+    // REASON: when objects and arrays are copied by reference
+
+    // to make a SHALLOW COPY, use the spread operator [...]
+    // const person3 = { ...person1 };
+    const person3 = _.cloneDeep(person1);
+    person3.first = 'larry';
+    person3.clothing.shirt = 100; // this will update the value in the first object!
+
+    // to make a DEEP CLONE or COPY, try using libraries with handy methods like https://lodash.com
+    // also use UNPKG.COM (see script src above) this lets you use _.cloneDeep
+
+    // SPREAD operator is also useful for merging objects
+
+    const meats = {
+      bacon: 2,
+      snausage: 3,
+    };
+    const veggies = {
+      tomato: 5,
+      shitake: 3,
+    };
+
+    // just spread in multiple objects and new values. this also works for ARRAYS
+    // note that the order of spreading affects which values will be overwritten when props are the same
+    const inventory = {
+      ...meats,
+      ...veggies,
+      oysters: 10,
+      bacon: 10,
+    };
+
+    function doStuff(data) {
+      data = 'something else';
+      console.log(data);
+    }
+
+    // BUG WARNING <(,)(,),)/''
+    // NOTE if you pass an object or array into a function and modify it, the external object will also be updated
+    // BOOLs, NUMS, and STRINGs will not be modified outside the function
+
+    function doStuff2(data) {
+      data.tomatoes = 10000;
+      console.log(data);
+    }
+
+    doStuff(name1);
   </script>
 </body>
 
