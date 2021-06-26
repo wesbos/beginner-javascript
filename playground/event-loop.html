@@ -9,8 +9,93 @@
 </head>
 
 <body>
-  <script>
+  <style>
+    .go {
+      margin: 5rem;
+      padding: 5rem;
+      background: white;
+      width: 250px;
+      height: 250px;
+      transition: all 0.42s;
 
+    }
+
+    .go.circle {
+      border-radius: 50%;
+    }
+
+    .go.red {
+      background-color: red;
+    }
+
+    .go.purple {
+      background-color: purple;
+      color: white;
+    }
+
+    .go.fadeOut {
+      opacity: 0;
+    }
+  </style>
+  <div class="go">Click Me</div>
+  <script>
+    // console.log('yo ben wake up and stretch');
+
+    // // running will come a second AFTER ending here, it's put in the callback queue
+    // // the callback function in setTimeout will wait and come back later
+    // // the call stack runs before callbacks run.
+    // // a callback, when first encountered, will be put in a queue
+    // // the call stack can only run one thing at a time.
+
+    // // we shouldn't have to stop everything in the browser when waiting
+    // // for an API
+
+    // console.log('Starting');
+    // setTimeout(function () {
+    //   console.log('Running...');
+    // }, 0);
+    // console.log('Ending');
+
+    // THIS IS CALLBACK HELL! AKA christmas tree code
+    // ENDLESS NESTING / indenting OF SHIT
+    // the promise land is the solution
+
+    const go = document.querySelector('.go');
+    go.addEventListener('click', function (e) {
+      const el = e.currentTarget;
+      // change text to GO when clicked
+      el.textContent = 'Go baby go!';
+      // make a circle after 2 seconds
+      setTimeout(function (e) {
+        el.classList.add('circle');
+
+        setTimeout(function (e) {
+          el.classList.add('red');
+
+          setTimeout(function () {
+            el.classList.remove('circle');
+            setTimeout(function () {
+              el.classList.remove('red');
+              el.classList.add('purple');
+              setTimeout(function () {
+                el.classList.add('fadeOut');
+              }, 500);
+            }, 300);
+          }, 250);
+        }, 500);
+      }, 500);
+    });
+
+    // make it red after 0.5
+    // make it square after 0.25
+    // make it purple after .42
+    // make it fade out after 0.5
+    // finish
+
+
+    function () {
+      const arr = [];
+    }
   </script>
 </body>
 

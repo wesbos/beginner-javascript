@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Event Loop</title>
+  <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+  <style>
+    .go {
+      margin: 5rem;
+      padding: 5rem;
+      background: white;
+      width: 250px;
+      height: 250px;
+      transition: all 0.42s;
+
+    }
+
+    .go.circle {
+      border-radius: 50%;
+    }
+
+    .go.red {
+      background-color: red;
+    }
+
+    .go.purple {
+      background-color: purple;
+      color: white;
+    }
+
+    .go.fadeOut {
+      opacity: 0;
+    }
+  </style>
+  <div class="go">Click Me</div>
+  <script>
+    // GREAT LITTLE WAIT FUNCTION
+    const wait = (ms = 0) => new Promise((resolve) => setTimeout(resolve, ms));
+
+    // long version
+    // function wait(ms = 0) {
+    //   return new Promise(function (resolve) {
+    //     setTimeout(resolve, ms);
+    //   });
+    // }
+
+    const go = document.querySelector('.go');
+
+    // YAY wait.then is way better than callback hell
+
+    // WOW this is WAYY better.
+    // async await is great
+    async function animate2(e) {
+      const elem = e.currentTarget;
+      elem.textContent = 'Go!';
+
+      await wait(500);
+      elem.classList.add('circle');
+      await wait(500);
+      elem.classList.add('red');
+      await wait(500);
+      elem.classList.remove('circle');
+      await wait(500);
+      elem.classList.remove('red');
+      elem.classList.add('purple');
+      await wait(500);
+      elem.classList.add('fadeOut');
+    }
+
+    function animate(e) {
+      const elem = e.currentTarget;
+      elem.textContent = 'Go!';
+      wait(500)
+        .then(() => {
+          elem.classList.add('circle');
+          return wait(500);
+        })
+        .then(() => {
+          elem.classList.add('red');
+          return wait(500);
+        })
+        .then(() => {
+          elem.classList.remove('circle');
+          return wait(500);
+        })
+        .then(() => {
+          elem.classList.remove('red');
+          elem.classList.add('purple');
+          return wait(500);
+        })
+        .then(() => {
+          elem.classList.add('fadeOut');
+        });
+    }
+
+    // go.addEventListener('click', animate);
+    go.addEventListener('click', animate2);
+
+    wait(2000).then(() => {
+      console.log('done');
+    });
+
+    // console.log('yo ben wake up and stretch');
+
+    // // running will come a second AFTER ending here, it's put in the callback queue
+    // // the callback function in setTimeout will wait and come back later
+    // // the call stack runs before callbacks run.
+    // // a callback, when first encountered, will be put in a queue
+    // // the call stack can only run one thing at a time.
+
+    // // we shouldn't have to stop everything in the browser when waiting
+    // // for an API
+
+    // console.log('Starting');
+    // setTimeout(function () {
+    //   console.log('Running...');
+    // }, 0);
+    // console.log('Ending');
+
+    // THIS IS CALLBACK HELL! AKA christmas tree code
+    // ENDLESS NESTING / indenting OF SHIT
+    // the promise land is the solution
+
+    go.addEventListener('clickXXXX', function (e) {
+      const el = e.currentTarget;
+      // change text to GO when clicked
+      el.textContent = 'Go baby go!';
+      // make a circle after 2 seconds
+      setTimeout(function (e) {
+        el.classList.add('circle');
+
+        setTimeout(function (e) {
+          el.classList.add('red');
+
+          setTimeout(function () {
+            el.classList.remove('circle');
+            setTimeout(function () {
+              el.classList.remove('red');
+              el.classList.add('purple');
+              setTimeout(function () {
+                el.classList.add('fadeOut');
+              }, 500);
+            }, 300);
+          }, 250);
+        }, 500);
+      }, 500);
+    });
+
+    // make it red after 0.5
+    // make it square after 0.25
+    // make it purple after .42
+    // make it fade out after 0.5
+    // finish
+  </script>
+</body>
+
+</html>

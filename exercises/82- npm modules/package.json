@@ -1,0 +1,26 @@
+{
+  "name": "82--npm-modules",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  },
+  "dependencies": {
+    "await-to-js": "^3.0.0",
+    "axios": "^0.21.1",
+    "date-fns": "^2.22.1",
+    "faker": "^5.5.3",
+    "lodash": "^4.17.21",
+    "waait": "^1.0.5"
+  },
+  "browserslist": [
+    "last 1 chrome versions"
+  ]
+}

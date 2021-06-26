@@ -9,7 +9,133 @@
 </head>
 
 <body>
+  <button class="one">1</button>
+  <button class="two">2</button>
 
+
+  <script>
+    console.log('cant stop wont stop coding');
+    const muhDate = new Date('August 11, 2042');
+    // now, muhDate instanceof Date == true;
+    console.dir(muhDate); // has tons of methods!
+    console.log(muhDate.getFullYear()); // like this
+    // methods are coming from the constructor object (the big mama)
+
+    const names = new Array('ben', 'moldo');
+    // this is the array literal format
+    const names2 = ['ben', 'moldo']; // these are the same
+    const ben = new Object({ name: 'ben' });
+    // some things don't have the literal syntax, so we have to add 'new' to the front
+
+    const span = document.createElement('span');
+    // document.createElement adds 'new' to these different types under the hood
+    // this span is simultaneously a node, an element, and an HTMLSpanElement
+    // this is 'extending'..
+    const name = 'ben';
+
+    // DONT modify built-ins
+    // but this is an example
+    // String.prototype.sarcastic = function () {
+    //   // make sarcastic
+    //   const sarcastic = this.split('')
+    //     .map((char, i) => {
+    //       if (i % 2) {
+    //         return char.toUpperCase();
+    //       }
+    //       return char.toLowerCase();
+    //     })
+    //     .join('');
+    //   return sarcastic;
+    // };
+
+    function Pizza(toppings = [], customer) {
+      console.log('Making a pizza');
+      // save the toppings that were passed in to this instance
+      this.toppings = toppings;
+      this.customer = customer;
+      this.id = Math.floor(Math.random() * 16777215).toString(16);
+      this.slices = 10;
+      this.size = 'medium';
+
+      // this function is the same for every Pizza instance
+      // so, it's more efficient to use a prototype and not duplicate it
+      // this.eat = function () {
+      //   if (this.slices > 0) {
+      //     console.log(`Chompah, now ${this.slices} remain`);
+      //     this.slices -= 1;
+      //   } else {
+      //     console.log('Sorry, no slices left.');
+      //   }
+      // };
+    }
+
+    // make a prototype to share the function across instances!
+    // if .eat doesn't exist on the instance, THEN it will check the prototype!
+
+    Pizza.prototype.eat = function () {
+      if (this.slices > 0) {
+        console.log(`Chompah, now ${this.slices} remain`);
+        this.slices -= 1;
+      } else {
+        console.log('Sorry, no slices left.');
+      }
+    };
+
+    // when someone calls pizza.describe
+    // report 'This pizza is for ben and there are x slices left.'
+
+    Pizza.prototype.describe = function () {
+      alert(
+        `This pizza is for ${this.customer} with ${this.toppings.join(
+          ', '
+        )}. There are ${this.slices} left.`
+      );
+    };
+
+    // this can be overwritten in the instance. It is looked up there first
+    Pizza.prototype.size = 'large';
+
+    // THAT NEW NEW
+    // when you use the NEW keyword on a function, it creates...
+    // .. a new object that is an instance of whatever function it was made from
+    // with THIS you can store information and functions specific to each instance
+    const pepperoniPizza = new Pizza(['pepperoncini'], 'ben fublingo');
+    const canadianPizza = new Pizza(
+      ['pepperoncinoniono', 'shrooms'],
+      'fen buliubo'
+    );
+
+    console.log(pepperoniPizza);
+    // constructor lets you reference the mama function that made this instance
+    console.log(pepperoniPizza.constructor);
+    console.log(pepperoniPizza instanceof Pizza);
+
+    // THAT THIS IS
+    // this keyword refers to the instance of the object that this thing is bound to
+    // the THIS keyword REFERS to the INSTANCE was clicked (in this case, a button)
+    // this refers to whatever the function is bound to.
+    // in this case, it's bound to the button that was clicked
+    // the THIS keyword is function scoped
+
+    const button1 = document.querySelector('.one');
+    const button2 = document.querySelector('.two');
+
+    // function tellMeAboutTheButton1() {
+    //   console.log(this);
+    // }
+
+    // // using an arrow function here allows you to access the parent function scope
+    // function tellMeAboutTheButton() {
+    //   console.log('outside', this);
+    //   setTimeout(() => {
+    //     console.log('inside', this);
+    //     this.textContent = 'You Clicked Me';
+    //   }, 1000);
+    // }
+
+    // button1.addEventListener('click', tellMeAboutTheButton);
+    // button2.addEventListener('click', tellMeAboutTheButton);
+  </script>
 </body>
 
 </html>

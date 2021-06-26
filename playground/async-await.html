@@ -10,7 +10,71 @@
 
 <body>
   <script>
+    function wait(ms = 0) {
+      return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+      });
+    }
 
+    function makePizza(toppings = []) {
+      // return is immediate, but resolve is when ready
+      // wait 1.2 seconds for the pizza to cook
+      // promises are made immediately, but they don't resolve until ready
+      return new Promise(function (resolve, reject) {
+        // reject if people try with pineapple
+        if (toppings.includes('mayo')) {
+          reject(new Error('seriously, get out'));
+        }
+
+        const bakeTime = 500 + toppings.length * 200;
+        setTimeout(function () {
+          resolve(`Here is your pizza 🍕 with the toppos ${toppings.join(', ')}.`);
+        }, bakeTime);
+      });
+    }
+
+    // ASYNC AWAIT
+    async function go() {
+      console.log('starting..');
+      // await will temporarily pause a function from running
+      // until the promise is resolved
+      await wait(2000);
+      console.log('ending');
+    }
+
+    // go();
+
+    // It is often better not to await each function separately.
+    // by using await Promise.all you can run multiple functions currently
+    async function makeDinner() {
+      const pizzaPromise1 = makePizza(['pepperoni']);
+      const pizzaPromise2 = makePizza(['anchovies']);
+      const [pep, mush] = await Promise.all([pizzaPromise1, pizzaPromise2]);
+      console.log(pep, mush);
+    }
+
+    makeDinner();
+    // // ASYNC can be used with any kind of function declaration
+
+    // // Await is ONLY valid inside an async function
+
+    // // Regular function declaration
+    // async function fd() { }
+
+    // // arrow function
+    // const arrowFn = async () => { };
+
+    // // callback function
+    // window.addEventListener('click', async function () { });
+
+    // // methods
+
+    // const person = {
+    //   // method
+    //   async sayHi() { },
+    //   // method shorthand
+    //   sayHey: async () => { },
+    //   };
   </script>
 </body>
 

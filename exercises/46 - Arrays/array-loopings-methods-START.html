@@ -12,7 +12,19 @@
 
 <body>
   <script>
-    const toppings = ['Mushrooms ', 'Tomatoes', 'Eggs', 'Chili', 'Lettuce', 'Avocado', 'Chiles', 'Bacon', 'Pickles', 'Onions', 'Cheese'];
+    const toppings = [
+      'Mushrooms ',
+      'Tomatoes',
+      'Eggs',
+      'Chili',
+      'Lettuce',
+      'Avocado',
+      'Chiles',
+      'Bacon',
+      'Pickles',
+      'Onions',
+      'Cheese',
+    ];
 
     const students = [
       {
@@ -67,32 +79,31 @@
         birthday: 'April 22, 1993',
         names: {
           first: 'Keith',
-          last: 'Buckley'
-        }
+          last: 'Buckley',
+        },
       },
       {
         birthday: 'January 3, 1975',
         names: {
           first: 'Larry',
-          last: 'Heep'
-        }
+          last: 'Heep',
+        },
       },
       {
         birthday: 'February 12, 1944',
         names: {
           first: 'Linda',
-          last: 'Bermeer'
-        }
-      }
+          last: 'Bermeer',
+        },
+      },
     ];
-
 
     const buns = ['egg', 'wonder', 'brioche'];
 
     const meats = {
       beyond: 10,
       beef: 5,
-      pork: 7
+      pork: 7,
     };
 
     const prices = {
@@ -124,11 +135,213 @@
       { type: 'pants', price: 123 },
     ];
 
+    // arguments are actual values
+    // parameters are placeholders
 
     /*
       Looping Methods
     */
 
+    // .FOREACH METHOD
+
+    function logTopping(topping, index, originalArray) {
+      const nextTopp = originalArray[index + 1];
+      const prevTopp = originalArray[index - 1];
+
+      // log the topping
+      console.log(topping);
+
+      // log prev. topping if it exists
+      prevTopp ? console.log(prevTopp) : null;
+
+      // log next topping if it exists
+      nextTopp ? console.log(nextTopp) : null;
+
+      // if last, say goodbye
+      index === originalArray.length - 1
+        ? console.log("g'bye!!!!!!!!")
+        : console.log('...grabbing next one...');
+    }
+
+    // toppings.forEach(logTopping);
+
+    // this also works
+    // toppings.forEach(topping => {
+    //   console.log(topping);
+    // })
+
+    // .MAP METHOD
+    // like a machine in a toy factory assembly line.
+    // it takes in data, does something to it, and then spits it out
+
+    function addArms(face) {
+      return `👋 ${face} 👋`;
+    }
+
+    // this will map over ALL items in the array, and return a new array
+    const toys = faces.map(addArms);
+
+    // console.log(toys);
+
+    function fodenize(name) {
+      return `${name} Foden`;
+    }
+
+    function capitalizeFirst(word) {
+      // don't use + to join strings! it should only be used for numbers
+      return `${word[0].toUpperCase()}${word.slice(1)}`;
+    }
+
+    const fullNames = ['ben', 'natsumi', 'miki', 'riki']
+      .map(capitalizeFirst)
+      // you can chain maps!
+      .map(fodenize);
+    // console.log(fullNames);
+
+    //
+    const orderTotalsWithTax = orderTotals.map((total) => Math.round(total * 1.1));
+    // console.log(orderTotalsWithTax);
+
+    // Array(x). creates a quick array and you can use .fill or .from etc.
+    // function attachBody(face, body) {
+    //   return `
+    //         ${face}
+    //       ${body.repeat(3)}
+    //     ${Array(3).fill(body).join('  ')}
+    //   👇    ${body.repeat(2)}   👇
+    //       ${Array(2).fill(body).join('   ')}
+    //       ${Array(2).fill(body).join('   ')}
+    //       👠    👠
+    //   `
+    // }
+
+    // faces.map(face => attachBody(face, '🧥')).forEach(body => console.log(body));
+
+    // MASSAGE THAT DATA
+    const cleanPeople = people.map(function (person) {
+      console.log(person);
+      // get their birthday
+      const birthday = new Date(person.birthday);
+
+      // methods like this .now that live on the mother object are called static methods
+      const now = Date.now();
+
+      // this returns milliseconds so you have to divide by the ms in a year and get the .floor!
+      const age = Math.floor((now - birthday) / 31536000000);
+
+      console.log(age);
+
+      // figure out how old they are
+      // return their full name and birthday in an object
+
+      return {
+        age,
+        name: `${person.names.first} ${person.names.last}`,
+      };
+    });
+
+    console.table(cleanPeople);
+    // console.dir(const_here); will tell you all the methods that exist on that object
+
+    // .FILTER METHOD
+    // returns an array of ALL items that match condition in function that is passed
+    // returns a subset
+
+    // return based on a function with a condition check
+    const over40 = cleanPeople.filter((person) => person.age > 40);
+
+    console.table(over40);
+    if (over40.length) {
+      console.log('there are some people over 40');
+    }
+
+    // .FIND METHOD -- only returns ONE item, an object
+
+    // you can use a higher order function here to make it more flexible
+
+    function findById(id) {
+      return function isStudent(student) {
+        return student.id === id;
+      };
+    }
+
+    // SUPER HANDY FUNCTION ALERT!
+    // GENERALIZED LOOKUP FUNCTION!
+    // take in a prop and a prop we're looking for, or a key and a value
+    function findByProp(prop, propWeAreLookingFor) {
+      return function isStudent(student) {
+        // must use square brackets here for [prop] because the prop is being passed in as a variable
+        // ... or as an argument to the function
+        return student[prop] === propWeAreLookingFor;
+      };
+    }
+
+    const student = students.find(findByProp('id', '565a'));
+    const student2 = students.find(findByProp('first_name', 'Micki'));
+    console.log(student2);
+
+    // .REDUCE METHOD
+    // reduce takes in an array of data, and it returns a result OR a single value
+    // make soup from raw ingredients
+
+    // SUPER HANDY FUNCTION ALERT!
+    // blow away all logs above!
+    console.clear();
+
+    // i.e. get a sum of a bunch of numbers
+
+    // this isn't the best becuase it has a side effect (external) variable
+    // let total = 0;
+    // orderTotals.forEach(singleTotal => {
+    //   total = total + singleTotal;
+    // })
+    // console.log(total);
+
+    // lets loop over an array and do something on each item
+    // Distill down into one value!
+    function tallyNums(tally, currentTotal) {
+      console.log(`The current tally is ${tally}`);
+      console.log(`This order total is ${currentTotal}`);
+      console.log(`__________`);
+      return tally + currentTotal;
+    }
+
+    const allOrders = orderTotals.reduce(tallyNums, 0);
+
+    console.log(`The grand total is $${allOrders}`);
+
+    function inventoryReducer(orderTotals, item) {
+      console.log(`Looping over ${item.type}`);
+      // increment the type by 1
+      // if it doesn't exist in the accumulator yet...
+      // we have to add the property first and set it to 1
+
+      orderTotals[item.type] = orderTotals[item.type] + 1 || 1;
+
+      // this is equivalent to this:
+      // if(totals.shirt) {
+      //   totals.shirt = totals.shirt + 1;
+      //   or you can use this: // totals.shirt ++;
+
+      // } else {
+      //   total.shirt = 1;
+      // }
+
+      // return the totals, so the next loop can use it
+      return orderTotals;
+    }
+
+    // we don't know all the items we might accumulate so start with an empty object
+    const inventoryCounts = inventory.reduce(inventoryReducer, {});
+    console.log(inventoryCounts);
+
+    // make it simple with a one-liner reduce
+    // start with zero, loop over every item, return accumulator plus item price
+    const totalInventoryPrice = inventory.reduce(
+      (acc, item) => acc + item.price,
+      0
+    );
+    console.log(totalInventoryPrice);
   </script>
 </body>
 

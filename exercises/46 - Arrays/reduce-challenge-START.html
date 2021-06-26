@@ -12,6 +12,144 @@
   <script>
     // Grab all the text from a web page
     // Count how many times each letter and number occurs
+    const text = `Sell on AliExpress
+Help
+Buyer ProtectionApp
+ / English / JPY
+AliExpress
+Smarter Shopping, Better Living!
+89
+yo yo
+teen dressessony a6400toyota camrywater pumpshopper bagsuzuki sx4
+LIVEFlash DealsStores You'll Love
+Categories
+Women's Fashion
+Men's Fashion
+Phones & Telecommunications
+Computer, Office & Security
+Consumer Electronics
+Jewelry & Watches
+Home, Pet & Appliances
+Bags & Shoes
+Toys , Kids & Babies
+Outdoor Fun & Sports
+Beauty, Health & Hair
+Automobiles & Motorcycles
+Home Improvement & Tools
+Top RankingsAliExpress Official RankingView more
+
+1447 orders
+Demo Board
+
+19781 interested
+Pans
+
+222897 followers
+DIY Hardware - Plumbing Hoses
+
+502949 followers
+Intelligent Items - Pet Hair Trimmer
+Flash Deals
+00:00:00
+High frequency Massage gun Rechargeable muscle relax body relaxation Electric massager with portable bag for fitness Pain Relief
+￥ 4,973
+-57%
+37 sold
+knitted polo neck bodysuit women
+￥ 1,456
+-30%
+6 sold
+Gothic Corset Women Sexy Underbust Corset Waist Trainer Corset Shaper  Plus Size Corpete Corselet Black White Red Blue S-6XL
+￥ 1,108
+-49%
+146 sold
+Woman Robe Nightgown  Long Sleepwear Vintage Elegant Homewear Ladies Long Dress Full Length Nighties
+￥ 1,944
+-25%
+6 sold
+ROCKBROS Ice Fabric Breathable UV Protection Running Arm Sleeves Fitness Basketball Elbow Pad Sport Cycling Outdoor Arm Warmers
+￥ 304
+-44%
+76 sold
+Raspberry PI 4/Zero W USB to Ethernet RJ45 network port USB HUB splitter
+￥ 1,268
+-53%
+11 sold
+Discover moreraw garden cartsalligator clipstiming lightlint rollerswimming captape in extensionsmens bucket hatevening dressesfree webcamscherry pittersun hats for menled wall lightsdog shoesski helmetbucket hat womensping pong ballsLazada Vietnamhair rollersbadminton racketlolita dressyoga ballcosplay costumeshuman hair lace front wigsselfie stickbluetooth car adaptertattoo gunfrench fry cutterponytailskids couchLazada Malaysialace front wigsskateboard shoesmens tiesexpress clothingbike framemens fashiontattoo kitscostumes for girlsdog nail clippersLazada Indonesiawallpaper stickerscary costumesmens crossbody bagroller skate shoesLazada Philippinesdog sweatersexpress menled light strips for roomsweatbandLazada Thailand
+
+ 
+Great value
+ 
+Worldwide shopping
+ 
+Safe payment
+ 
+Shop with confidence
+ 
+Help center
+ 
+Shop better
+Stay connected
+         
+Shopping with us
+Making payments
+Delivery options
+Buyer Protection
+Customer service
+Customer service
+Transaction Services Agreement
+Take our feedback survey
+Help
+Customer Service, Disputes & Reports, Buyer Protection, Report IPR infringement
+AliExpress Multi-Language Sites
+Russian, Portuguese, Spanish, French, German, Italian, Dutch, Turkish, Japanese, Korean, Thai, Vietnamese, Arabic, Hebrew, Polish
+Browse by Category
+All Popular, Product, Promotion, Low Price, Great Value, Reviews, Blog, Seller Portal, BLACK FRIDAY, AliExpress Assistant
+Alibaba Group
+Alibaba Group Website, AliExpress, Alimama, Alipay, Fliggy, Alibaba Cloud, Alibaba International, AliTelecom, DingTalk, Juhuasuan, Taobao Marketplace, Tmall, Xiami, AliOS, 1688
+Google Play App Store
+Intellectual Property Protection - Privacy Policy - Sitemap - Terms of Use - Information for EU consumers - Transaction Services Agreement for EU consumers - User Information Legal Enquiry Guide ©️2010-2021 AliExpress.com. All rights reserved.
+`;
+    // arrayify
+    //get rid of junk first
+    // REGEX WARNING!!!
+    //if char is a-zA-Z0-9, keep it
+    function isValidChar(char) {
+      return char.match(/[a-zA-Z0-9]/i);
+    }
+
+    // this could be an arrow too
+    function lowercase(char) {
+      return char.toLowerCase();
+    }
+
+    function instanceCounter(count, char) {
+      count[char]
+        ? count[char] = count[char] + 1
+        : count[char] = 1;
+      return count;
+    }
+
+    // .SPLIT .FILTER .MAP .REDUCE
+    // find the distribution of each alphanumeric in the page
+
+    const result = text
+      .split('') // split ech char into an item of an array
+      .filter(isValidChar)
+      .map(lowercase)
+      .reduce(instanceCounter, {})  // convert all to lower
+      ;
+
+    console.log(result);
+
+    function sortByValue(a, b) {
+      return a[1] - b[1];
+    }
+
+    const sortedResult = Object
+      .entries(result)
+      .sort(sortByValue);
+    console.log(sortedResult);
 
 
   </script>

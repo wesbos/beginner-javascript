@@ -15,7 +15,50 @@
       font-size: 5rem;
       font-weight: 900;
     }
+
+    .lds-ripple {
+      display: inline-block;
+      position: relative;
+      --size: 20px;
+      width: var(--size);
+      height: var(--size);
+    }
+
+    .lds-ripple div {
+      position: absolute;
+      border: 1px solid white;
+      opacity: 1;
+      border-radius: 50%;
+      animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+    }
+
+    .lds-ripple div:nth-child(2) {
+      animation-delay: -0.5s;
+    }
+
+    @keyframes lds-ripple {
+      0% {
+        top: calc(var(--size)*0.45);
+        left: calc(var(--size)*0.45);
+        width: 0;
+        height: 0;
+        opacity: 1;
+      }
+
+      100% {
+        top: 0px;
+        left: 0px;
+        width: calc(var(--size)*0.9);
+        height: calc(var(--size)*0.9);
+        opacity: 0;
+      }
+    }
+
+    .hidden {
+      display: none;
+    }
   </style>
+
 </head>
 
 <body>
@@ -23,10 +66,19 @@
     <div class="joke">
       <p>Dad Jokes.</p>
     </div>
-    <button class="getJoke">Get A Joke</button>
+    <button class="getJoke">
+      <span class="jokeText">Get A Joke</span>
+      <div class="lds-ripple loader hidden">
+        <div></div>
+        <div></div>
+      </div>
+    </button>
+  </div>
+
   </div>
 
   <script src="./jokes.js"></script>
+
 </body>
 
 </html>

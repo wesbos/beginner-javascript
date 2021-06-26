@@ -9,9 +9,53 @@
 </head>
 
 <body>
+  <p class="user"></p>
   <script>
+    // console.log('yo breh, heh');
 
+    // AJAX
+    // async
+    // javascript
+    // and
+    // xml
+
+    // most people dont use xml these days
+    // it just means hitting an API and fetching data
+
+    // hitting an api returns a JSON string
+    // so you need JSON.parse(data) to get an object
+
+    // an ENDPOINT is the URL you need to visit to get the data
+    const baseEndpoint = 'https://api.github.com';
+    const usersEndpoint = `${baseEndpoint}/users`;
+    const userElement = document.querySelector('.user');
+
+    async function displayUser(username) {
+      userElement.textContent = 'loading...';
+      const response = await fetch(`${usersEndpoint}/${username}`);
+      const data = await response.json();
+      console.log(data);
+      userElement.textContent = `${data.name}`;
+
+      userElement.insertAdjacentHTML(
+        'afterend',
+        ` 
+      <p>
+        <button><a href="${data.blog}">${data.blog}</a></button>
+        </p>
+      `
+      );
+      // console.log(data.avatar_url);
+    }
+
+    function handleError(err) {
+      console.log(`oh no:${err}`);
+    }
+
+    displayUser('nickfoden').catch(handleError);
   </script>
+
+
 </body>
 
 </html>

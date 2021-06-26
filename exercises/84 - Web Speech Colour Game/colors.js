@@ -156,3 +156,15 @@ export function isDark(colorName) {
   const b = parseInt(hex.substring(4, 6), 16);
   return r * 0.299 + g * 0.587 + b * 0.114 < 120;
 }
+
+export const colorsByLength = Object.keys(colors).sort(
+  (a, b) => a.length - b.length
+);
+
+export function isValidColor(word) {
+  // this double bang makes it a boolean -- it will return true or false
+  return !!colors[word];
+}
+
+window.colors = colors;
+// console.log(colorsByLength);

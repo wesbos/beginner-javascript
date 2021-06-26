@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-16">
+</head>
+<html>
+
+<head>
+  <title>Select Text File</title>
+</head>
+
+<body>
+  <input type="file" name="inputfile" id="inputfile">
+  <br>
+
+  <pre id="rawOutput"></pre>
+  <pre id="glitchOutput"></pre>
+
+
+  <script type="text/javascript">
+    const glitchFreq = 52;
+    const cutLength = 5;
+    const output = '';
+
+    document
+      .getElementById('inputfile')
+      .addEventListener('change', function getFiles() {
+        const fr = new FileReader();
+
+        fr.onload = function getRaw() {
+          // store and check rawText
+          const rawText = fr.result;
+
+          // add raw text to page
+          document.getElementById('rawOutput').textContent = `raw: ${rawText}`;
+
+          function randBlank(index) {
+            let index1 = index;
+            if (Math.floor(Math.random() * glitchFreq) > 50) {
+              index1 = '.';
+            }
+            return index1;
+          }
+
+          const glitchText = rawText.split('');
+          const glitchMid = glitchText
+          const glitchMid = glitchText.map(randBlank).join('');
+          // take /r /n characters, skip
+
+          console.log(rawText.split(''));
+          document.getElementById(
+            'glitchOutput'
+          ).textContent = `arr: ${glitchText}`;
+        };
+        // console.log(this.files[0]);
+        fr.readAsText(this.files[0]);
+      });
+
+// const lineArr = rawText
+    //   .split(/\r?\n/)
+    //   .filter(Boolean)
+    //   .map((obj) => obj.split(''));
+
+    // function yo() {
+    //   for (const i of lineArr) {
+    //     const j = Math.floor(Math.random()) * 10;
+    //     if (Math.random() > 0.5) {
+    //       console.log(lineArr[0][j].join(''));
+    //     }
+    //   }
+    // }
+    // yo();
+
+    // console.log(Array.isArray(lineArr));
+    // console.log(lineArr);
+
+    // lineArr.foreach()
+    //   // console.log(Math.random() > 0.5);
+    //   if (Math.random() > 0.5) {
+    //     // console.log(lineArr.length);
+    //     console.log(lineArr[0]);
+    //   }
+    // }
+    // const outText = line.map(randBlank).join('\r\n');
+
+    // for (const expense of tripExpenses) {
+    //   if (expense.paid) {
+    //     if (expense.currency == 'USD')
+    //       totalPaidExpensesInINR += expense.amount * 70;
+    //     else totalPaidExpensesInINR += expense.amount;
+    //   }
+    // }
+
+//   // randomly set index
+
+    //   const glitchText = rawText.split('/\r?\n/').map(randBlank).join('');
+    //   document.getElementById(
+    //     'glitchOutput'
+    //   ).textContent = `arr: ${glitchText}`;
+    // };
+  </script>
+</body>
+
+</html>

@@ -9,7 +9,88 @@
 </head>
 
 <body>
+  <div class="wrapper">
+    <p>Yo i'm in a wrapper</p>
+  </div>
 
+
+  <script>// use call, apply, and bind when THIS is different from what you want
+
+    const person = {
+      name: 'ben fublingo',
+      sayHi() {
+        console.log(`hey ${this.name}`);
+        return `hey ${this.name}`;
+      },
+    };
+
+    const nacchan = { name: 'nacchan' };
+
+    // const { sayHi } = person;
+
+    // bind lets you change what the THIS is
+    const sayHi = person.sayHi.bind({ name: 'harry' });
+
+    // BIND with querySelector example
+    // you have to manually pass it reference to the thing you want 'this' to be equal to
+    // by calling bind against querySelector, we say when the $ function is run...
+    // use `document` as the this value.
+
+    // BIND changes the context of what 'THIS' is referring to
+
+    const $ = document.querySelector.bind(document);
+
+    // somewhere under the hood of querySelector
+    // it needs to know where to look for the thing you are selecting
+    // either globally, or in a subset
+    const wrapper = document.querySelector('.wrapper');
+    const p = wrapper.querySelector('p');
+    console.log(p);
+
+    // bind can also be used to preload a function
+
+    const bill = {
+      total: 999,
+      calculate(taxRate) {
+        console.log(this); // this will be equal to window
+        // because calc below isn't bound to anything
+        // eslint-disable-next-line prettier/prettier
+        return this.total + (this.total * taxRate);
+      },
+      describe(mealType, drinkType, taxRate) {
+        console.log(
+          `Meal: ${mealType} & Drink: ${drinkType} was ${this.calculate(taxRate)}`
+        );
+      },
+    };
+
+    const total = bill.calculate(0.09);
+    // bind can be preloaded with args that need to be called
+    // When you bind something, you can pass additional args that line up with
+    // the function or method
+    // additional args will always be off by 1
+    // when looping over a list of data, you have access to that data at the time you call it
+
+    // this way you can pre-install arguments on a function
+    // and call it whenever you want.
+    // notice how calc() below will automatically use the assigned arguments
+
+    const calc = bill.calculate.bind({ total: 500 }, 0.06);
+    console.log(calc());
+
+    // CALL and APPLY work the same way but they call the function for you
+    // when you want to bind and call later, use bind
+    // when you want to bind and call immediately, use call
+
+    const total2 = bill.calculate.call({ total: 500 }, 0.06);
+    console.log(total2);
+
+    // apply accepts a single array of arguments, otherwise it's the same as call
+    const total3 = bill.calculate.apply({ total: 500 }, [0.06]);
+
+    const myMeal = bill.describe.apply(bill, ['pizzz', 'fizzz', 0.1]);
+    const myMeal2 = bill.describe.call(bill, 'pizzz', 'fizzz', 0.1);
+  </script>
 </body>
 
 </html>

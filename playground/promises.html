@@ -10,7 +10,102 @@
 
 <body>
   <script>
+    function makePizza(toppings = []) {
+      // return is immediate, but resolve is when ready
+      // wait 1.2 seconds for the pizza to cook
+      // promises are made immediately, but they don't resolve until ready
+      return new Promise(function (resolve, reject) {
+        // reject if people try with pineapple
+        if (toppings.includes('mayo')) {
+          reject(new Error('seriously, get out'));
+        }
 
+        const bakeTime = 500 + toppings.length * 200;
+        setTimeout(function () {
+          resolve(`Here is your pizza 🍕 with the toppos ${toppings.join(', ')}.`);
+        }, bakeTime);
+
+        // when you are ready, you can resolve this promise
+        // if something went wrong, we can reject ths promise;
+      });
+    }
+
+    // notice that these are all one level deep!
+    // they are run sequentially here
+    console.log('first');
+    makePizza(['ham', 'pineapple'])
+      .then(function (pizza) {
+        console.log(pizza);
+        return makePizza(['slamma']);
+      })
+      .then(function (pizza) {
+        console.log(pizza);
+        return makePizza(['hot pep', 'tamanegi', 'feta']);
+      })
+      .then(function (pizza) {
+        console.log(pizza);
+      })
+      .then((pizza) => {
+        console.log('All done.');
+      })
+      .catch(handleError);
+    // just one catch at the end of sequential .then is enough
+    // it will escape the promise chain whenever one is rejected
+
+    console.log('after');
+
+    // // run them concurrently
+    // const pizzaPromise1 = makePizza(['ham', 'pineapple']);
+    // const pizzaPromise2 = makePizza(['ham', 'bacon', 'sausage']);
+    // const pizzaPromise3 = makePizza(['spam', 'facon', 'snausage']);
+
+    // // PROMISE.all is a static method takes an array of promises
+    // // it only resolves when all subpromises have been resolved
+    // const dinnerPromise = Promise.all([
+    //   pizzaPromise1,
+    //   pizzaPromise2,
+    //   pizzaPromise3,
+    // ]);
+
+    // dinnerPromise.then(function ([hottie, garbo, pam]) {
+    //   console.log(hottie, garbo, pam);
+    // });
+
+    // // .race will return the first to resolve, then the second, etc.
+    // const firstPizzaPromise = Promise.race([
+    //   pizzaPromise1,
+    //   pizzaPromise2,
+    //   pizzaPromise3,http://www.dubzstreams.com/livegames/2021/06/racing/formula1-france-18jun/
+    // ]);
+
+    // firstPizzaPromise.then((pizz) => {
+    //   console.log('haraheri keisatsu kaikestsu shita');
+    //   console.log(pizz);
+    // });
+
+    // REJECTION
+
+    function handleError(err) {
+      console.log('oh noes');
+      console.log(err);
+    }
+
+    // chain a .catch to handle an error
+    makePizza(['cheese', 'tuna', 'mayo'])
+      // then = success case
+      .then((pizza) => {
+        console.log(pizza);
+      })
+      // catch = manage rejection
+      .catch(handleError);
+
+    const p1 = makePizza(['pep']);
+    const p2 = makePizza(['mayo']);
+
+    // Promise.allSettled tells you when they are all done without escaping on rejection
+    const dinnerPromise2 = Promise.allSettled([p1, p2]);
+
+    dinnerPromise2.then((results) => console.log(results));
   </script>
 </body>
 

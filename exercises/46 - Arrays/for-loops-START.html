@@ -12,15 +12,96 @@
   <script>
     const numbers = [2, 34, 3, 23, 42, 3, 1, 65, 364, 5, 645, 6];
 
-    const name = 'Wes Bos';
+    const name = 'Fen Botron';
 
-    // For
+    const ben = {
+      name: 'ben',
+      age: 100,
+      cool: true
+    }
 
-    // For of
+    // LOOPS!
+    // these are less popular than array methods
 
-    // For in
+    // forEach is often better than using a loop
+    const array1 = ['a', 'b', 'c'];
 
-    // While Loop
+    array1.forEach(element => console.log(element));
+
+
+    // FOR () LOOP
+    // this is handy when you want to increment by something other than 1
+    // for (let i = 0; i <= 10; i++) {
+    //   console.log(i);
+    // }
+
+
+    // refactor these to forOf, map, reduce, etc.
+
+    for (let i = 0; i < numbers.length; i++) {
+      console.log(numbers[i]);
+    }
+
+    // FOR OF LOOP 
+    // for looping over iterables -- something with a length
+    // handy for SEQUENCING PROMISES with AWAIT, etc.
+    for (const letter of name) {
+      console.log(letter);
+    }
+    for (const number of numbers) {
+      console.log(numbers);
+    }
+
+    // FOR IN LOOP
+    // used for looping over keys of an object
+    for (const prop in ben) {
+      console.log(prop);
+    }
+
+    const baseHumanStats = {
+      feet: 2,
+      arms: 2,
+      eyes: 2,
+      head: 1
+    }
+
+
+    function Human(name) {
+      this.name = name;
+    }
+
+    Human.prototype = baseHumanStats;
+
+    const ben2 = new Human('ben');
+
+    console.log(ben2);
+
+    console.log(Object.entries(ben2));
+
+    // if you need to grab prototype methods and properties, you can use a FOR IN !
+    // this will return name feet arms eyes head
+    for (const prop in ben2) {
+      console.log(prop);
+    }
+
+
+    // WHILE LOOP
+    // will run infinitely until condidition is false 
+    // YOU NEED AN EXIT CONDITION OR IT CREATES AN INFINITE LOOP
+    let cool = true;
+    let i = 1;
+
+    // this checks condition before the first run
+    while (cool === true) {
+      console.log("You're cool");
+      i++;
+      if (i > 100) {
+        cool = false;
+      }
+    }
+
+
+
   </script>
 </body>
 

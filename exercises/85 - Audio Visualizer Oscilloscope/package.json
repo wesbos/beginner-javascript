@@ -1,7 +1,6 @@
 {
   "name": "oscilloscope",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "browserslist": [
     "last 1 chrome version"
@@ -13,5 +12,6 @@
   "license": "ISC",
   "devDependencies": {
     "parcel-bundler": "^1.12.4"
-  }
+  },
+  "description": ""
 }
