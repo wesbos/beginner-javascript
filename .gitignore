@@ -3,3 +3,4 @@ node_modules/
 haters/
 .cache/
 dist/
+*.code-workspace
