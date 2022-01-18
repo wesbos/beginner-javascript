@@ -12,6 +12,6 @@
     "last 1 Chrome version"
   ],
   "dependencies": {
-    "parcel": "^2.0.0-alpha.2.1"
+    "parcel": "2.0.1"
   }
 }
