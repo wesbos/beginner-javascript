@@ -1,4 +1,4 @@
-const baseEndpoint = 'http://www.recipepuppy.com/api';
+const baseEndpoint = 'https://recipes.beginnerjavascript.com/api';
 const proxy = `https://cors-anywhere.herokuapp.com/`;
 const form = document.querySelector('form.search');
 const recipesGrid = document.querySelector('.recipes');
@@ -23,7 +23,7 @@ async function fetchAndDisplay(query) {
   const recipes = await fetchRecipes(query);
   console.log(recipes);
   form.submit.disabled = false;
-  displayRecipes(recipes.results);
+  displayRecipes(recipes);
 }
 
 function displayRecipes(recipes) {
