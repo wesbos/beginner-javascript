@@ -12,6 +12,6 @@
     "dompurify": "^2.0.7"
   },
   "devDependencies": {
-    "parcel-bundler": "^1.12.4"
+    "parcel": "2.0.1"
   }
 }
