@@ -12,6 +12,6 @@
     "sass": "^1.23.3"
   },
   "dependencies": {
-    "parcel": "^1.12.4"
+    "parcel": "2.0.1"
   }
 }
