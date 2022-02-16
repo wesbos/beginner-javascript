@@ -23,7 +23,7 @@ async function fetchAndDisplay(query) {
   const recipes = await fetchRecipes(query);
   console.log(recipes);
   form.submit.disabled = false;
-  displayRecipes(recipes);
+  displayRecipes(recipes.results);
 }
 
 function displayRecipes(recipes) {
