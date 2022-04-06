@@ -11,22 +11,31 @@
 <body>
   <script>
     // function scoped
+    // eslint-disable-next-line no-var
     var first = 'wes';
     // block scoped
+    // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line prefer-const
     let age = 300;
+    // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line prefer-const
     let cool = true;
 
     const Dog = 'bowser';
 
+    // Zmienne zaczynahją się od A-Z, _, $
+    // _ - biblioteka Lowdash; $ - równoznaczny z bilbiotkę JQuery
+
     // camel case
     const iLovePizza = true;
-    // UpperCamelCase
+    // UpperCamelCase == PascalCase - stosujemy w nazwach klas
     const ILoveToEatHotDogs = false;
     // snake case!!
+    // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line camelcase
     const this_is_snake_case = 'cool';
-
-
-
+    // nie uzywany w JS - kebab case - z tego względu, ze '-' są niedozwolone w JS w nazwie zmiennych
+    // const this-is-kebab-case = false;
   </script>
 </body>
 

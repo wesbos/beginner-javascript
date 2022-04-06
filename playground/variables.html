@@ -9,7 +9,42 @@
 </head>
 
 <body>
+  <script>
+    // semicolon kończy linię kodu JS i jest on na zakończeniu kazdego 'statemnet' czy to
+    // deklaracja zmienne, funckja, metoda
+    
+    // zmienne: var let i const  *dodatkowe info - te zmienne są w scopie globalnym*
+    // var i let mogą być update'owane - poprzez nadpisanie czy np, z samej konsoli w devToolsach
+    // eslint-disable-next-line no-var
+    var first = 'wes'; // inicjalizacja zmiennej first
+    first = 'test update';
+    // eslint-disable-next-line prefer-const
+    let age = 300;
 
+    // nie mozna nadpisac zmiennej const
+    // eslint-disable-next-line no-undef
+    const cool = ture; // stała
+    console.log(first); // function call statemnet
+
+    if (age > 10) {
+      console.log('you ar old'); // tu mamy blok kodu a reszta jest częścią warunku if
+    }
+
+    /*
+    Jest mozliwość nie uzywania ';' bo JS ma ASI - automatyczne semicolon insertion, ale to taki FYI
+    jak powstawał JS to mozna było stworzyc zmienna bez podania jej typu e.g. dog = 'snick'; 
+    ale to powodwało wiele problemow wiec weszło: 'use strict'; przez to będzie krzyczeć, 
+    ze jakas zmienna nie jest zadeklarowana 
+    */
+
+    /*
+    Scope - gdzie są dostępne moje zmienne? 
+    zmienne typu var są w scopie funkcji - są dostępne tylko w danej funkcji
+    a let i const są w 'block scope varaibles' -> {}
+    */
+
+    // uzywa const -> let -> var (bardzo rzadko uzywa var)
+  </script>
 </body>
 
 </html>
