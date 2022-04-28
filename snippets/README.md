@@ -6,7 +6,8 @@ I've included it as straight html for you to copy+paste, or as a VS Code snippet
 
 Please PR this repo adding in other editor snippets as well.
 
-## VS Code
+## VS Code great 
+
 
 1. Open the command palette with `⌘` or `Ctrl` + `P`
 2. Type `>configure user snippets` and run the found command
