@@ -23,7 +23,7 @@ function handleOption(event) {
 }
 optionsInputs.forEach(input => input.addEventListener('input', handleOption));
 
-// Write a fucntion that will populate the users video
+// Write a function that will populate the users video
 async function populateVideo() {
   const stream = await navigator.mediaDevices.getUserMedia({
     video: { width: 1280, height: 720 },
