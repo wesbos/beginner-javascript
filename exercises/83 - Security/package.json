@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dompurify": "^2.0.7"
+    "dompurify": "^3.4.12"
   },
   "devDependencies": {
     "parcel": "2.0.1"
